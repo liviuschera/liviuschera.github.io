@@ -1,0 +1,10 @@
+.footer {
+   color: var(--color-primary);
+
+   &__icon {
+      width: 1.6rem;
+      height: 1.6rem;
+      fill: red;
+      animation: pulse 1s infinite;
+   }
+}

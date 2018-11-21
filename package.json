@@ -1,0 +1,26 @@
+{
+   "name": "liviuschera",
+   "version": "1.0.0",
+   "description": "Personal webpage - CV",
+   "main": "index.js",
+   "scripts": {
+      "watch:sass": "node-sass sass/main.scss css/styles.css -w",
+      "devserver": "live-server",
+      "start": "npm-run-all --parallel devserver watch:sass",
+      "compile:sass": "node-sass sass/main.scss css/style.comp.css",
+      "prefix:css": "postcss --use autoprefixer -b \"last 10 versions\" css/style.comp.css -o css/styles.css",
+      "build:css": "npm-run-all compile:sass prefix:css"
+   },
+   "author": "Liviu Schera",
+   "license": "ISC",
+   "devDependencies": {
+      "autoprefixer": "^8.0.0",
+      "node-sass": "^4.11.0",
+      "npm-run-all": "^4.1.2",
+      "postcss-cli": "^5.0.0"
+   },
+   "dependencies": {
+      "g": "^2.0.1",
+      "liveserver": "^0.1.20"
+   }
+}
