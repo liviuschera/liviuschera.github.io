@@ -15,8 +15,8 @@ $breakpoint arguement choices:
 */
 :root {
   --color-primary: #0487cc;
-  --color-primary-light: #3bb9fb;
-  --color-primary-dark: #024568;
+  --color-primary-light: lighten($color-primary, 20%);
+  --color-primary-dark: darken($color-primary, 20%);
   --color-grey-light-1: #f7f7f7;
   --color-grey-light-2: #eee;
   --color-grey-dark-1: #444;
@@ -24,12 +24,17 @@ $breakpoint arguement choices:
   --color-grey-dark-3: #999;
   --color-white: #fff;
   --color-black: #000;
-  --shadow-section: 0 2px 5px 0 rgba(0, 0, 0, 0.15), 0 2px 1rem 0 rgba(0, 0, 0, 0.11);
+  --shadow-section: 0 2px 5px 0 rgba(0, 0, 0, 0.15),
+      0 2px 1rem 0 rgba(0, 0, 0, 0.11);
   --shadow-heading: 0 0 0.9rem rgba(0, 0, 0, 0.5);
   --shadow-img: 0 0 0.5rem rgba(0, 0, 0, 0.4);
   --shadow-hover: 0 0 0.8rem rgba(0, 0, 0, 0.3), 0 0 1.2rem rgba(0, 0, 0, 0.2);
   --default-font-size: 1.6rem;
-  --gradient-default: linear-gradient(to right bottom, var(--color-primary-light), var(--color-primary-dark)); }
+  --gradient-default: linear-gradient(
+      to right bottom,
+      var(--color-primary-light),
+      var(--color-primary-dark)
+   ); }
 
 @keyframes english {
   0% {
@@ -105,7 +110,7 @@ section {
   color: var(--color-white); }
 
 body {
-  font-family: "PT Sans Narrow", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  font-family: "PT Sans Narrow", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   font-weight: 400;
   line-height: 2;
   background-color: var(--color-grey-light-2);
@@ -243,7 +248,7 @@ h4 {
       .info-block__vertical-line--icon:hover {
         border-radius: 50%;
         transform: rotate(360deg) scale(1.5);
-        background-image: var(--gradient-default); }
+        background-image: linear-gradient(to right bottom, #3bb9fb, #024568); }
   .info-block__details {
     margin-top: 6rem;
     padding: 3rem;
@@ -591,7 +596,7 @@ h4 {
         width: 90%;
         animation: animate-bar 2s 2s ease-out; }
       .section-skills .skill-list__item .cisco {
-        width: 70%;
+        width: 50%;
         -webkit-animation: animate-bar 2s 2s ease-out;
         animation: animate-bar 2s 2s ease-out; }
       .section-skills .skill-list__item .sql {
@@ -704,7 +709,7 @@ h4 {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-image: var(--gradient-default);
+    background-image: linear-gradient(to right bottom, #3bb9fb, #024568);
     width: 13rem;
     height: 13rem;
     margin: 1rem;

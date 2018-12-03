@@ -2,7 +2,6 @@
    //COLORS
    // --color-primary: orange;
    --color-primary: #0487cc;
-   $color-primary: #0487cc;
    --color-primary-light: lighten($color-primary, 20%);
    --color-primary-dark: darken($color-primary, 20%);
 
@@ -33,3 +32,11 @@
       var(--color-primary-dark)
    );
 }
+$color-primary: #0487cc;
+$color-primary-light: lighten($color-primary, 20%);
+$color-primary-dark: darken($color-primary, 20%);
+$gradient-default: linear-gradient(
+   to right bottom,
+   $color-primary-light,
+   $color-primary-dark
+);
