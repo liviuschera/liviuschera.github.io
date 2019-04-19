@@ -17,8 +17,6 @@
       cursor: pointer;
 
       @include respond(tab-port-900) {
-         top: 2rem;
-         right: 2rem;
       }
    }
 
