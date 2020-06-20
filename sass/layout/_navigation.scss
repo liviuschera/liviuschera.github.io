@@ -12,7 +12,7 @@
       right: 6rem;
       border-radius: 50%;
       z-index: 2000;
-      box-shadow: 0 1rem 3rem rgba(#000, 0.1);
+      box-shadow: 0 1rem 3rem rgba(#000, 0.2);
       text-align: center;
       cursor: pointer;
 
@@ -102,7 +102,7 @@
 
       &::before,
       &::after {
-         content: "";
+         content: '';
          position: absolute;
          left: 0;
          transition: all 0.2s;

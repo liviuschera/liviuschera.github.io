@@ -77,7 +77,7 @@
       transition: all 0.2s ease-in;
 
       &::before {
-         content: "";
+         content: '';
          position: absolute;
          margin-left: -6.9rem;
          margin-top: -1.8rem;
@@ -92,8 +92,8 @@
       }
 
       &:hover {
-         box-shadow: 0 0.5rem 5rem rgba(#000, 0.2);
-         transform: translateY(-0.3rem);
+         box-shadow: 0 0.5rem 3rem rgba(#000, 0.2);
+         // transform: translateY(-0.3rem);
       }
    }
 }

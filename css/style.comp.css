@@ -251,7 +251,7 @@ h4 {
       .info-block__details .list li {
         list-style: disc; }
     .info-block__details::before {
-      content: "";
+      content: '';
       position: absolute;
       margin-left: -6.9rem;
       margin-top: -1.8rem;
@@ -263,10 +263,9 @@ h4 {
         .info-block__details::before {
           margin-left: -5.9rem; } }
     .info-block__details:hover {
-      box-shadow: 0 0.5rem 5rem rgba(0, 0, 0, 0.2);
-      transform: translateY(-0.3rem); }
+      box-shadow: 0 0.5rem 3rem rgba(0, 0, 0, 0.2); }
 
-.item-portofolio {
+.item-portfolio {
   box-shadow: var(--shadow-section);
   color: var(--color-white);
   height: 30rem;
@@ -274,40 +273,40 @@ h4 {
   overflow: hidden;
   margin: 1rem;
   font-size: 1.6rem; }
-  .item-portofolio__img:first-child {
+  .item-portfolio__img:first-child {
     width: auto;
     display: flex;
     margin-left: auto;
     margin-right: auto; }
-  .item-portofolio__img {
+  .item-portfolio__img {
     width: 100%;
     height: 100%;
     transform: scale(1.1);
     transition: all 0.35s; }
-  .item-portofolio .figcaption {
+  .item-portfolio .figcaption {
     padding: 2rem 3rem;
     transform: translateY(-31.1rem);
     height: 100%;
     height: 100%;
     transition: all 0.35s;
     opacity: 0; }
-    .item-portofolio .figcaption:hover {
+    .item-portfolio .figcaption:hover {
       opacity: 0.8;
       z-index: 2;
       background-color: var(--color-primary); }
-      .item-portofolio .figcaption:hover .figcaption__paragraph {
+      .item-portfolio .figcaption:hover .figcaption__paragraph {
         transform: translateX(0); }
-      .item-portofolio .figcaption:hover .figcaption__heading::after {
+      .item-portfolio .figcaption:hover .figcaption__heading::after {
         transform: translateX(0); }
-      .item-portofolio .figcaption:hover .section-portofolio.item-portofolio__img {
+      .item-portfolio .figcaption:hover .section-portfolio.item-portfolio__img {
         transform: scale(1); }
-    .item-portofolio .figcaption__heading {
+    .item-portfolio .figcaption__heading {
       position: relative;
       transition: all 0.35s;
       font-weight: 600;
       margin-bottom: 1rem; }
-      .item-portofolio .figcaption__heading::after {
-        content: "";
+      .item-portfolio .figcaption__heading::after {
+        content: '';
         position: absolute;
         height: 2px;
         background-color: var(--color-white);
@@ -316,12 +315,12 @@ h4 {
         left: 0;
         transform: translateX(-100%);
         transition: all 0.35s; }
-    .item-portofolio .figcaption__paragraph {
+    .item-portfolio .figcaption__paragraph {
       transform: translateX(100%);
       transition: all 0.35s; }
-    .item-portofolio .figcaption__paragraph:not(:last-child) {
+    .item-portfolio .figcaption__paragraph:not(:last-child) {
       margin-bottom: 6rem; }
-    .item-portofolio .figcaption__link, .item-portofolio .figcaption__link:visited, .item-portofolio .figcaption__link:link {
+    .item-portfolio .figcaption__link, .item-portfolio .figcaption__link:visited, .item-portfolio .figcaption__link:link {
       position: absolute;
       z-index: 1000;
       opacity: 0;
@@ -350,7 +349,7 @@ h4 {
   right: 6rem;
   border-radius: 50%;
   z-index: 2000;
-  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.2);
   text-align: center;
   cursor: pointer; }
 
@@ -410,7 +409,7 @@ h4 {
     background-color: var(--color-grey-dark-1);
     display: inline-block; }
   .navigation__icon::before, .navigation__icon::after {
-    content: "";
+    content: '';
     position: absolute;
     left: 0;
     transition: all 0.2s; }
@@ -439,8 +438,7 @@ h4 {
 .main-container {
   width: 100rem;
   margin: 0 auto;
-  transition: all 0.4s;
-  overflow: hidden; }
+  transition: all 0.4s; }
   @media only screen and (max-width: 75em) {
     .main-container {
       padding: 0 2rem; } }
@@ -675,13 +673,13 @@ h4 {
       -webkit-filter: none;
       filter: none; }
 
-.section-portofolio {
+.section-portfolio {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-content: center; }
   @media only screen and (max-width: 56.25em) {
-    .section-portofolio {
+    .section-portfolio {
       margin-bottom: 3rem; } }
 
 .section-interests {
@@ -713,5 +711,5 @@ h4 {
       color: var(--color-white);
       align-self: center; }
     .section-interests .elem:hover {
-      box-shadow: 0 6rem 11rem rgba(0, 0, 0, 0.2);
-      transform: translateY(-1.5rem) scale(1.03); }
+      box-shadow: 0 2rem 3rem rgba(0, 0, 0, 0.2);
+      transform: translateY(-0.2rem) scale(1.03); }
