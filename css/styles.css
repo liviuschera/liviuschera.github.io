@@ -582,7 +582,7 @@ h4 {
       .section-skills .skill-list__item .html-css {
         width: 90%;
         animation: animate-bar 2s 2s ease-out; }
-      .section-skills .skill-list__item .cisco {
+      .section-skills .skill-list__item .vuejs {
         width: 50%;
         -webkit-animation: animate-bar 2s 2s ease-out;
         animation: animate-bar 2s 2s ease-out; }
