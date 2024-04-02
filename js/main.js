@@ -1,47 +1,60 @@
-const portfolio = Array.from(document.querySelectorAll('.item-portfolio'));
+const portfolio = Array.from(document.querySelectorAll(".item-portfolio"));
 
-const checkbox = document.querySelector('.navigation__checkbox');
+const checkbox = document.querySelector(".navigation__checkbox");
 
 portfolio.forEach((element) => {
-   element.addEventListener('mouseover', () => {
-      element.querySelector('img').style.transform = 'scale(1)';
-   });
-   element.addEventListener('mouseout', () => {
-      element.querySelector('img').style.transform = 'scale(1.1)';
-   });
+    element.addEventListener("mouseover", () => {
+        element.querySelector("img").style.transform = "scale(1)";
+    });
+    element.addEventListener("mouseout", () => {
+        element.querySelector("img").style.transform = "scale(1.1)";
+    });
 });
 
-document.addEventListener('click', (event) => {
-   const e = event.target.className;
-   console.log(event.target.hash);
+window.addEventListener("load", onLoad);
 
-   if (
-      e !== 'navigation__nav' &&
-      e !== 'navigation__link' &&
-      e !== 'navigation__checkbox'
-   ) {
-      if (event.target.hash) {
-         let hash = '#' + event.target.hash;
-         // document.querySelector(event.target.hash).focus();
-         console.log(event.target.hash.attr);
+function onLoad() {
+    const copyrightEl = document.getElementById("year");
 
-         // event.target.hash.attr("tabindex", "-1"); //Adding tabindex for elements not focusable
-         // console.log(event.target.hash.attr);
+    if (copyrightEl) {
+        const currentYear = new Date().getFullYear();
+        const copyrightText = `2018 - ${currentYear}`;
 
-         event.target.hash.focus(); //Setting focus
-         document.querySelector(hash).scrollIntoView({
-            behavior: 'smooth',
-         });
-         // event.target.hash.focus();
-         // if (event.target.hash.is(":focus")) {
-         //    //checking if the target was focused
-         //    return false;
-         // } else {
-         // }
-      }
+        copyrightEl.innerHTML = copyrightText;
+    }
+}
 
-      // e === "navigation__checkbox"
-      //    ? (checkbox.checked = false)
-      //    : (checkbox.checked = true);
-   }
+document.addEventListener("click", (event) => {
+    const e = event.target.className;
+    console.log(event.target.hash);
+
+    if (
+        e !== "navigation__nav" &&
+        e !== "navigation__link" &&
+        e !== "navigation__checkbox"
+    ) {
+        if (event.target.hash) {
+            let hash = "#" + event.target.hash;
+            // document.querySelector(event.target.hash).focus();
+            console.log(event.target.hash.attr);
+
+            // event.target.hash.attr("tabindex", "-1"); //Adding tabindex for elements not focusable
+            // console.log(event.target.hash.attr);
+
+            event.target.hash.focus(); //Setting focus
+            document.querySelector(hash).scrollIntoView({
+                behavior: "smooth",
+            });
+            // event.target.hash.focus();
+            // if (event.target.hash.is(":focus")) {
+            //    //checking if the target was focused
+            //    return false;
+            // } else {
+            // }
+        }
+
+        // e === "navigation__checkbox"
+        //    ? (checkbox.checked = false)
+        //    : (checkbox.checked = true);
+    }
 });
