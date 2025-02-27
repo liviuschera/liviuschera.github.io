@@ -84,6 +84,7 @@ import { experienceData } from "./data/experience.js";
 import { educationData } from "./data/education.js";
 import { portfolioData } from "./data/portfolio.js";
 import { skillsData } from "./data/skills.js";
+import { interestsData } from "./data/interests.js";
 
 // Experience section renderer
 const renderExperience = () => {
@@ -282,6 +283,29 @@ const renderSkills = () => {
     skillsSection.innerHTML = skillsHTML;
 };
 
+// Interests section renderer
+const renderInterests = () => {
+    const interestsSection = document.querySelector(".section-interests");
+
+    const interestsHTML = `
+        <p class="paragraph">${interestsData.description}</p>
+        ${interestsData.interests
+            .map(
+                (interest) => `
+            <div class="elem">
+                <svg class="elem__icon">
+                    <use href="./img/sprite.svg#icon-${interest.icon}"></use>
+                </svg>
+                <span class="elem__text">${interest.text}</span>
+            </div>
+        `
+            )
+            .join("")}
+    `;
+
+    interestsSection.innerHTML = interestsHTML;
+};
+
 // Call all render functions when the page loads
 document.addEventListener("DOMContentLoaded", () => {
     updateCopyright();
@@ -289,4 +313,5 @@ document.addEventListener("DOMContentLoaded", () => {
     renderEducation();
     renderPortfolio();
     renderSkills();
+    renderInterests();
 });
