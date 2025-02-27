@@ -93,3 +93,44 @@ document.addEventListener("keydown", (e) => {
         checkbox.checked = false;
     }
 });
+
+import { experienceData } from "./data/experience.js";
+
+// Experience section renderer
+const renderExperience = () => {
+    const experienceSection = document.querySelector(".section-experience");
+
+    const experienceHTML = experienceData
+        .map(
+            (experience) => `
+        <div class="info-block">
+            <aside class="info-block__years">
+                <h4>${experience.period}</h4>
+            </aside>
+            <div class="info-block__vertical-line"></div>
+            <aside class="info-block__details">
+                <h2 class="heading-secondary">${experience.title}</h2>
+                <h3 class="heading-tertiary">${experience.location}</h3>
+                <ul class="list list--bullet">
+                    ${experience.responsibilities
+                        .map(
+                            (resp) => `
+                        <li>${resp}</li>
+                    `
+                        )
+                        .join("")}
+                </ul>
+            </aside>
+        </div>
+    `
+        )
+        .join("");
+
+    experienceSection.innerHTML = experienceHTML;
+};
+
+// Call the function when the page loads
+document.addEventListener("DOMContentLoaded", () => {
+    updateCopyright();
+    renderExperience();
+});

@@ -3,6 +3,7 @@
     "version": "1.0.0",
     "description": "Personal webpage - CV",
     "main": "index.js",
+    "type": "module",
     "scripts": {
         "watch:sass": "node-sass sass/main.scss css/styles.css -w",
         "devserver": "live-server",
