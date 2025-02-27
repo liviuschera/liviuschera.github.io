@@ -32,6 +32,11 @@
 .section-about {
     display: flex;
     padding: 3rem;
+    margin-top: 5rem;
+
+    @include respond(tab-port-900) {
+        margin-top: 10rem;
+    }
 
     @include respond(phone) {
         flex-direction: column;
