@@ -95,6 +95,7 @@ document.addEventListener("keydown", (e) => {
 });
 
 import { experienceData } from "./data/experience.js";
+import { educationData } from "./data/education.js";
 
 // Experience section renderer
 const renderExperience = () => {
@@ -129,8 +130,48 @@ const renderExperience = () => {
     experienceSection.innerHTML = experienceHTML;
 };
 
-// Call the function when the page loads
+// Education section renderer
+const renderEducation = () => {
+    const educationSection = document.querySelector(".section-education");
+
+    const educationHTML = educationData
+        .map(
+            (education) => `
+        <div class="info-block">
+            <aside class="info-block__years">
+                <h4>${education.year}</h4>
+            </aside>
+            <div class="info-block__vertical-line">
+                <div class="info-block__vertical-line--icon">
+                    <svg class="icon">
+                        <use href="./img/sprite.svg#icon-graduation-cap"></use>
+                    </svg>
+                </div>
+            </div>
+            <aside class="info-block__details">
+                <h2 class="heading-secondary">${education.title}</h2>
+                <h3 class="heading-tertiary">${education.institution}</h3>
+                <ul class="list list--bullet">
+                    ${education.details
+                        .map(
+                            (detail) => `
+                        <li>${detail}</li>
+                    `
+                        )
+                        .join("")}
+                </ul>
+            </aside>
+        </div>
+    `
+        )
+        .join("");
+
+    educationSection.innerHTML = educationHTML;
+};
+
+// Call both functions when the page loads
 document.addEventListener("DOMContentLoaded", () => {
     updateCopyright();
     renderExperience();
+    renderEducation();
 });
