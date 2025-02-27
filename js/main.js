@@ -1,60 +1,95 @@
+// Cache DOM elements
 const portfolio = Array.from(document.querySelectorAll(".item-portfolio"));
-
 const checkbox = document.querySelector(".navigation__checkbox");
+const navigationLinks = document.querySelectorAll(".navigation__link");
 
+// Portfolio hover effects
 portfolio.forEach((element) => {
+    const img = element.querySelector("img");
+
     element.addEventListener("mouseover", () => {
-        element.querySelector("img").style.transform = "scale(1)";
+        img.style.transform = "scale(1)";
+        img.style.transition = "transform 0.3s ease";
     });
+
     element.addEventListener("mouseout", () => {
-        element.querySelector("img").style.transform = "scale(1.1)";
+        img.style.transform = "scale(1.1)";
     });
 });
 
-window.addEventListener("load", onLoad);
-
-function onLoad() {
+// Copyright year update
+const updateCopyright = () => {
     const copyrightEl = document.getElementById("year");
-
     if (copyrightEl) {
         const currentYear = new Date().getFullYear();
-        const copyrightText = `2018 - ${currentYear}`;
-
-        copyrightEl.innerHTML = copyrightText;
+        copyrightEl.textContent = `2018 - ${currentYear}`;
     }
-}
+};
+
+// Smooth scroll functionality
+const scrollToSection = (hash) => {
+    const targetElement = document.querySelector(hash);
+    if (targetElement) {
+        targetElement.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+        });
+    }
+};
+
+// Close mobile menu after clicking a link
+const closeMobileMenu = () => {
+    if (window.innerWidth <= 768) {
+        checkbox.checked = false;
+    }
+};
+
+// Event Listeners
+window.addEventListener("load", updateCopyright);
 
 document.addEventListener("click", (event) => {
-    const e = event.target.className;
-    console.log(event.target.hash);
+    const { target } = event;
 
-    if (
-        e !== "navigation__nav" &&
-        e !== "navigation__link" &&
-        e !== "navigation__checkbox"
-    ) {
-        if (event.target.hash) {
-            let hash = "#" + event.target.hash;
-            // document.querySelector(event.target.hash).focus();
-            console.log(event.target.hash.attr);
+    // Handle navigation links
+    if (target.classList.contains("navigation__link")) {
+        event.preventDefault();
+        const hash = target.getAttribute("href");
+        scrollToSection(hash);
+        closeMobileMenu();
+    }
+});
 
-            // event.target.hash.attr("tabindex", "-1"); //Adding tabindex for elements not focusable
-            // console.log(event.target.hash.attr);
+// Optional: Add scroll spy functionality
+const handleScrollSpy = () => {
+    const sections = document.querySelectorAll("section");
 
-            event.target.hash.focus(); //Setting focus
-            document.querySelector(hash).scrollIntoView({
-                behavior: "smooth",
-            });
-            // event.target.hash.focus();
-            // if (event.target.hash.is(":focus")) {
-            //    //checking if the target was focused
-            //    return false;
-            // } else {
-            // }
-        }
+    window.addEventListener("scroll", () => {
+        let current = "";
+        const scrollPosition = window.scrollY;
 
-        // e === "navigation__checkbox"
-        //    ? (checkbox.checked = false)
-        //    : (checkbox.checked = true);
+        sections.forEach((section) => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+
+            if (scrollPosition >= sectionTop - sectionHeight / 3) {
+                current = section.getAttribute("id");
+            }
+        });
+
+        navigationLinks.forEach((link) => {
+            link.classList.remove("active");
+            if (link.getAttribute("href") === `#${current}-link`) {
+                link.classList.add("active");
+            }
+        });
+    });
+};
+
+handleScrollSpy();
+
+// Optional: Add keyboard navigation
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && checkbox.checked) {
+        checkbox.checked = false;
     }
 });
