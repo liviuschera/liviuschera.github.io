@@ -1,5 +1,27 @@
 export const experienceData = [
     {
+        period: "05/2024 - Present",
+        title: "Front-End Developer Apprentice",
+        location: "EPAM Systems, Romania (Remote)",
+        responsibilities: [
+            "Front-End Specialization Stage 2 (Jan 2025 - Present)",
+            "Working with Node.js, GraphQL, CI/CD, AWS, and Amazon S3",
+            "Front-End Specialization Program (Aug 2024 - Dec 2024):",
+            "Built a comprehensive Course Learning Platform using React and TypeScript",
+            "Integrated React Router v6 and Redux Toolkit",
+            "Implemented secure authentication workflow and role-based access control",
+            "Created protected routes using React Router loaders",
+            "Utilized RTK Query for efficient global state API endpoints",
+            "Front-End Fundamentals Program (May 2024 - Jul 2024):",
+            "Built responsive interfaces optimized for mobile and tablet devices",
+            "Developed dynamic user interfaces with JavaScript",
+            "Enhanced UI functionality through DOM manipulation",
+            "Applied SOLID principles for maintainable code architecture",
+            "Integrated various third-party APIs",
+            "Conducted testing and debugging using Jest",
+        ],
+    },
+    {
         period: "08/2022 - 04/2023",
         title: "IT Technician",
         location: "Cairns, Australia",
