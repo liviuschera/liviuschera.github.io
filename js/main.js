@@ -83,6 +83,7 @@ document.addEventListener("keydown", (e) => {
 import { experienceData } from "./data/experience.js";
 import { educationData } from "./data/education.js";
 import { portfolioData } from "./data/portfolio.js";
+import { skillsData } from "./data/skills.js";
 
 // Experience section renderer
 const renderExperience = () => {
@@ -209,10 +210,83 @@ const renderPortfolio = () => {
     });
 };
 
+// Skills section renderer
+const renderSkills = () => {
+    const skillsSection = document.querySelector(".section-skills");
+
+    const renderSkillList = (skills) => {
+        return skills
+            .map(
+                (skill) => `
+            <li class="skill-list__item">
+                <span class="bar ${skill.className}" style="width: ${skill.level}%">
+                    ${skill.name}
+                </span>
+            </li>
+        `
+            )
+            .join("");
+    };
+
+    const renderLanguageCircles = () => {
+        return skillsData.languages.skills
+            .map(
+                (language) => `
+            <svg class="svg" width="100" height="100">
+                <filter id="shadow">
+                    <feDropShadow dx="0" dy="0" stdDeviation="1" />
+                </filter>
+                <circle class="base" cx="50" cy="50" r="40"></circle>
+                <circle class="language-circle ${language.className}"
+                        cx="50" cy="50" r="40"
+                        style="stroke-dasharray: ${language.strokeDasharray}"></circle>
+                <text id="sessionLabel" x="50" y="-45"
+                      font-size="15" text-anchor="middle">
+                    ${language.name}
+                </text>
+            </svg>
+        `
+            )
+            .join("");
+    };
+
+    const skillsHTML = `
+        <div class="section-skills__professional">
+            <div class="section-skills__title">
+                <h3>${skillsData.professional.title}</h3>
+            </div>
+            <ul class="list skill-list">
+                ${renderSkillList(skillsData.professional.skills)}
+            </ul>
+        </div>
+
+        <div class="section-skills__personal">
+            <div class="section-skills__title">
+                <h3>${skillsData.personal.title}</h3>
+            </div>
+            <ul class="list skill-list">
+                ${renderSkillList(skillsData.personal.skills)}
+            </ul>
+        </div>
+
+        <div class="section-skills__language">
+            <div class="section-skills__title">
+                <h3>${skillsData.languages.title}</h3>
+            </div>
+            <div class="section-skills__language-wrapper">
+                ${renderLanguageCircles()}
+            </div>
+        </div>
+    `;
+
+    skillsSection.innerHTML = skillsHTML;
+};
+
 // Call all render functions when the page loads
 document.addEventListener("DOMContentLoaded", () => {
     updateCopyright();
     renderExperience();
     renderEducation();
     renderPortfolio();
+    renderSkills();
 });
