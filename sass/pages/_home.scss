@@ -20,48 +20,106 @@
     }
 }
 
-// Section wrapper
-.section-wrapper {
-    margin-bottom: 10rem;
-
-    &:first-of-type {
-        .heading-primary {
-            // Remove heading from first section (About)
-            display: none;
-        }
-    }
-}
-
-// Generic section styles
-.section {
-    box-shadow: var(--shadow-section);
-    background-color: var(--color-white);
-    padding: 3rem;
-}
-
-// Remove margin-bottom from individual sections since it's handled by wrapper
 .section-about,
 .section-skills,
-.section-portfolio,
-.section-education,
-.section-experience,
 .section-interests {
-    margin-bottom: 0;
+    box-shadow: var(--shadow-section);
+    background-color: var(--color-white);
 }
 
 // ////////////////////////////////////////////////////////
 // SECTION ABOUT
 .section-about {
     display: flex;
-
-    @include respond(tab-port-900) {
-        margin-top: -14rem;
-    }
+    padding: 3rem;
 
     @include respond(phone) {
         flex-direction: column;
     }
-    // ... rest of the styles
+
+    .list > li,
+    .link {
+        display: flex;
+        align-items: center;
+        .icon {
+            margin-right: 1rem;
+        }
+    }
+
+    &__left {
+        flex-direction: column;
+        justify-content: space-between;
+        flex: 0 0 30%;
+
+        @include respond(tab-port-900) {
+            flex: 1 0 35%;
+        }
+
+        @include respond(phone) {
+            width: 80%;
+            align-self: center;
+            padding-top: 3rem;
+        }
+
+        .photo-box {
+            padding-bottom: 1rem;
+
+            &__photo {
+                width: 100%;
+                box-shadow: var(--shadow-img);
+            }
+        }
+
+        .cv-btn {
+            @include respond(phone) {
+                margin-bottom: 3rem;
+            }
+
+            &,
+            &:link,
+            &:visited {
+                text-align: center;
+                width: 100%;
+                box-shadow: var(--shadow-img);
+                display: inline-block;
+                transition: all 0.2s;
+            }
+
+            &__box {
+                padding: 1rem;
+            }
+
+            &:hover {
+                box-shadow: var(--shadow-hover);
+            }
+
+            &:active,
+            &:focus {
+                box-shadow: var(--shadow-img);
+            }
+        }
+    }
+
+    &__right {
+        padding: 0 1rem 0 5rem;
+
+        @include respond(phone) {
+            padding: 0 1rem 0 3rem;
+        }
+
+        .info-box {
+            padding-top: 1rem;
+            display: flex;
+
+            @include respond(tab-port-900) {
+                flex-direction: column;
+            }
+
+            .list:not(:last-child) {
+                margin-right: 3rem;
+            }
+        }
+    }
 }
 
 // ////////////////////////////////////////////////////////
