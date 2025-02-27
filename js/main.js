@@ -85,6 +85,7 @@ import { educationData } from "./data/education.js";
 import { portfolioData } from "./data/portfolio.js";
 import { skillsData } from "./data/skills.js";
 import { interestsData } from "./data/interests.js";
+import { aboutData } from "./data/about.js";
 
 // Experience section renderer
 const renderExperience = () => {
@@ -306,9 +307,66 @@ const renderInterests = () => {
     interestsSection.innerHTML = interestsHTML;
 };
 
+// About section renderer
+const renderAbout = () => {
+    const aboutSection = document.querySelector(".section-about__right");
+
+    const aboutHTML = `
+        <h1 class="heading-primary heading-primary--about">
+            <span class="heading-primary--1">Hi, I'm</span>
+            ${aboutData.name}
+        </h1>
+
+        <h3 class="heading-tertiary">${aboutData.title}</h3>
+
+        ${aboutData.description
+            .map((paragraph) => `<p class="paragraph">${paragraph}</p>`)
+            .join("")}
+
+        <div class="info-box">
+            <ul class="list">
+                <li>
+                    <svg class="icon">
+                        <use href="./img/sprite.svg#icon-location-pin"></use>
+                    </svg>${aboutData.contact.location}
+                </li>
+                <li>
+                    <svg class="icon">
+                        <use href="./img/sprite.svg#icon-old-phone"></use>
+                    </svg>${aboutData.contact.phone}
+                </li>
+                <li>
+                    <svg class="icon">
+                        <use href="./img/sprite.svg#icon-email"></use>
+                    </svg>${aboutData.contact.email}
+                </li>
+            </ul>
+
+            <ul class="list">
+                ${aboutData.socialLinks
+                    .map(
+                        (link) => `
+                        <li class="links-list__item">
+                            <a class="link" href="${link.url}" target="_blank">
+                                <svg class="icon">
+                                    <use href="./img/sprite.svg#icon-${link.icon}"></use>
+                                </svg> ${link.text}
+                            </a>
+                        </li>
+                    `
+                    )
+                    .join("")}
+            </ul>
+        </div>
+    `;
+
+    aboutSection.innerHTML = aboutHTML;
+};
+
 // Call all render functions when the page loads
 document.addEventListener("DOMContentLoaded", () => {
     updateCopyright();
+    renderAbout();
     renderExperience();
     renderEducation();
     renderPortfolio();
