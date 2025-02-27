@@ -93,12 +93,24 @@ const renderExperience = () => {
 
     const experienceHTML = experienceData
         .map(
-            (experience) => `
+            (experience, index) => `
         <div class="info-block">
             <aside class="info-block__years">
                 <h4>${experience.period}</h4>
             </aside>
-            <div class="info-block__vertical-line"></div>
+            <div class="info-block__vertical-line">
+                ${
+                    index === 0
+                        ? `
+                <div class="info-block__vertical-line--icon">
+                    <svg class="icon">
+                        <use href="./img/sprite.svg#icon-graduation-cap"></use>
+                    </svg>
+                </div>
+                `
+                        : ""
+                }
+            </div>
             <aside class="info-block__details">
                 <h2 class="heading-secondary">${experience.title}</h2>
                 <h3 class="heading-tertiary">${experience.location}</h3>
