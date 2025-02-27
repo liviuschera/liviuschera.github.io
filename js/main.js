@@ -3,20 +3,6 @@ const portfolio = Array.from(document.querySelectorAll(".item-portfolio"));
 const checkbox = document.querySelector(".navigation__checkbox");
 const navigationLinks = document.querySelectorAll(".navigation__link");
 
-// Portfolio hover effects
-portfolio.forEach((element) => {
-    const img = element.querySelector("img");
-
-    element.addEventListener("mouseover", () => {
-        img.style.transform = "scale(1)";
-        img.style.transition = "transform 0.3s ease";
-    });
-
-    element.addEventListener("mouseout", () => {
-        img.style.transform = "scale(1.1)";
-    });
-});
-
 // Copyright year update
 const updateCopyright = () => {
     const copyrightEl = document.getElementById("year");
@@ -96,6 +82,7 @@ document.addEventListener("keydown", (e) => {
 
 import { experienceData } from "./data/experience.js";
 import { educationData } from "./data/education.js";
+import { portfolioData } from "./data/portfolio.js";
 
 // Experience section renderer
 const renderExperience = () => {
@@ -136,17 +123,23 @@ const renderEducation = () => {
 
     const educationHTML = educationData
         .map(
-            (education) => `
+            (education, index) => `
         <div class="info-block">
             <aside class="info-block__years">
                 <h4>${education.year}</h4>
             </aside>
             <div class="info-block__vertical-line">
+                ${
+                    index === 0
+                        ? `
                 <div class="info-block__vertical-line--icon">
                     <svg class="icon">
                         <use href="./img/sprite.svg#icon-graduation-cap"></use>
                     </svg>
                 </div>
+                `
+                        : ""
+                }
             </div>
             <aside class="info-block__details">
                 <h2 class="heading-secondary">${education.title}</h2>
@@ -169,9 +162,57 @@ const renderEducation = () => {
     educationSection.innerHTML = educationHTML;
 };
 
-// Call both functions when the page loads
+// Portfolio section renderer
+const renderPortfolio = () => {
+    const portfolioSection = document.querySelector(".section-portfolio");
+
+    const portfolioHTML = portfolioData
+        .map(
+            (project) => `
+        <figure class="item-portfolio">
+            <img class="item-portfolio__img ${project.className || ""}"
+                src="${project.imageUrl}"
+                alt="${project.imageAlt}" />
+            <figcaption class="figcaption">
+                <h3 class="figcaption__heading">${project.title}</h3>
+                <p class="figcaption__paragraph">${project.description}</p>
+                <p class="figcaption__paragraph">
+                    <strong>Tags:</strong>
+                    <br />${project.tags.join(", ")}
+                </p>
+                <a class="figcaption__link" href="${
+                    project.projectUrl
+                }" target="_blank"></a>
+            </figcaption>
+        </figure>
+    `
+        )
+        .join("");
+
+    portfolioSection.innerHTML = portfolioHTML;
+
+    // Reattach hover effects
+    const portfolioItems = Array.from(
+        document.querySelectorAll(".item-portfolio")
+    );
+    portfolioItems.forEach((element) => {
+        const img = element.querySelector("img");
+
+        element.addEventListener("mouseover", () => {
+            img.style.transform = "scale(1)";
+            img.style.transition = "transform 0.3s ease";
+        });
+
+        element.addEventListener("mouseout", () => {
+            img.style.transform = "scale(1.1)";
+        });
+    });
+};
+
+// Call all render functions when the page loads
 document.addEventListener("DOMContentLoaded", () => {
     updateCopyright();
     renderExperience();
     renderEducation();
+    renderPortfolio();
 });
