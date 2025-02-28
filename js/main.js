@@ -68,8 +68,7 @@ const handleScrollSpy = () => {
             link.classList.remove("active");
             const href = link.getAttribute("href").substring(1); // Remove the # from href
 
-            // Compare the href with the current section ID + "-link"
-            if (current && href === `${current}-link`) {
+            if (href === current) {
                 link.classList.add("active");
             }
         });
