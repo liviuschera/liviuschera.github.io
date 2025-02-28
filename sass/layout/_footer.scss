@@ -1,10 +1,15 @@
 .footer {
-   color: var(--color-primary);
+    color: var(--color-primary);
+    margin-top: 5rem;
 
-   &__icon {
-      width: 1.6rem;
-      height: 1.6rem;
-      fill: red;
-      animation: pulse 1s infinite;
-   }
+    .paragraph:first-child {
+        font-size: 2rem;
+    }
+
+    &__icon {
+        width: 1.6rem;
+        height: 1.6rem;
+        fill: red;
+        animation: pulse 1s infinite;
+    }
 }
