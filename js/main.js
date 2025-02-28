@@ -47,7 +47,8 @@ document.addEventListener("click", (event) => {
 
 // Add scroll spy functionality
 const handleScrollSpy = () => {
-    const sections = document.querySelectorAll("section");
+    // Get all sections except the navigation
+    const sections = document.querySelectorAll(".section-wrapper");
 
     window.addEventListener("scroll", () => {
         let current = "";
@@ -57,6 +58,7 @@ const handleScrollSpy = () => {
             const sectionTop = section.offsetTop;
             const sectionHeight = section.clientHeight;
 
+            // Adjust the offset to make the highlighting more accurate
             if (scrollPosition >= sectionTop - sectionHeight / 3) {
                 current = section.getAttribute("id");
             }
@@ -64,16 +66,23 @@ const handleScrollSpy = () => {
 
         navigationLinks.forEach((link) => {
             link.classList.remove("active");
-            if (link.getAttribute("href") === `#${current}-link`) {
+            const href = link.getAttribute("href").substring(1); // Remove the # from href
+
+            // Compare the href with the current section ID + "-link"
+            if (current && href === `${current}-link`) {
                 link.classList.add("active");
             }
         });
     });
 };
 
+// Initialize scroll spy
 handleScrollSpy();
 
-// Optional: Add keyboard navigation
+// Also initialize on DOMContentLoaded to ensure all elements are available
+document.addEventListener("DOMContentLoaded", handleScrollSpy);
+
+// Add keyboard navigation
 document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && checkbox.checked) {
         checkbox.checked = false;
