@@ -45,7 +45,7 @@ document.addEventListener("click", (event) => {
     }
 });
 
-// Optional: Add scroll spy functionality
+// Add scroll spy functionality
 const handleScrollSpy = () => {
     const sections = document.querySelectorAll("section");
 
@@ -378,10 +378,11 @@ const renderAbout = () => {
 // Call all render functions when the page loads
 document.addEventListener("DOMContentLoaded", () => {
     updateCopyright();
+    // Reorder these function calls to match navigation menu order
     renderAbout();
-    renderExperience();
-    renderEducation();
-    renderPortfolio();
     renderSkills();
+    renderEducation();
+    renderExperience();
+    renderPortfolio();
     renderInterests();
 });
